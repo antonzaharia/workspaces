@@ -10,11 +10,6 @@ Rails.application.configure do
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
-
-  config.sass.preferred_syntax = :sass
-  config.sass.line_comments = false
-  config.sass.cache = false
-
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
   # system, or in some way before deploying your code.

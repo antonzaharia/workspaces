@@ -1,8 +1,8 @@
-<nav class="main-navbar">
+<nav id="main-navbar">
   <div class="logo">Workspaces</div>
-  <div class="items">
+  <div class="nav-items">
     <% if current_user %>
-      <div class="menu-item">
+      <div class="nav-item">
         <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
       </div>
     <% else %>

@@ -1,7 +1,11 @@
 #main-navbar {
-  .nav-item {
-    .nav-link {
-      color: red;
+  display: flex;
+  justify-content: space-between;
+  .nav-items {
+    display: flex;
+    .nav-item {
+      .nav-link {
+      }
     }
   }
 }
