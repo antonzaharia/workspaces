@@ -1,0 +1,17 @@
+<nav class="main-navbar">
+  <div class="logo">Workspaces</div>
+  <div class="items">
+    <% if current_user %>
+      <div class="menu-item">
+        <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </div>
+    <% else %>
+      <div class="<%= menu_item_class('') %>">
+        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+      </div>
+      <div class="<%= menu_item_class('') %>">
+        <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+      </div>
+    <% end %>
+  </div>
+</nav>

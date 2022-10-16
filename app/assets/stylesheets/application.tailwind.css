@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './navbar';
+
+body {
+  @apply text-black font-sans;
+}
+@layer components {
+  .logo {
+    @apply text-black;
+  }
+}
