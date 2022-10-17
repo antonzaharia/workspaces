@@ -74,4 +74,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 gem 'devise'
+gem 'sassc-rails'

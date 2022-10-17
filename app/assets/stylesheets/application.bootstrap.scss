@@ -1,0 +1,13 @@
+
+
+@import 'bootswatch/dist/quartz/variables';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import 'bootswatch/dist/quartz/bootswatch';
+
+@import './navbar';
+
+body {
+  background-image: none;
+  background-color: white;
+}
