@@ -1,0 +1,26 @@
+<div class="container pt-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5">
+            <h4 class="text-center"><%= t('.forgot_your_password') %></h4>
+
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+              <%= bootstrap_devise_error_messages! %>
+
+              <div class="form-group my-4">
+                <%= f.label :email, 'Enter you email address' %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+              </div>
+
+              <div class="form-group mt-5 text-center">
+                <%= f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'devise/shared/links' %>
