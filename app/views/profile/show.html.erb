@@ -1,0 +1,44 @@
+<div class="my-5" id="profile-page">
+  <h1 class="">Profile</h1>
+
+  <div data-controller="profile-pic">
+    <div class="field">
+      <label for="uploaded-pic">
+        Your profile picture
+        <div>
+          <% if current_user.icon.attached? %>
+            <%= image_tag current_user.icon, class: 'profile-pic', id: 'pic-preview' %>
+          <% else %>
+            <%= image_tag 'blank_profile', class: 'profile-pic', id: 'pic-preview' %>
+          <% end %>
+        </div>
+
+        <p class="button">Change image</p>
+      </label>
+    </div>
+  </div>
+
+  <% frame_id = dom_id(@user, 'details_turbo_frame')%>
+  <%= form_for @user, url: update_profile_path(@user), data: { turbo_frame: frame_id } do |f| %>
+    <%= turbo_frame_tag frame_id do %>
+      <div class="card">
+        <div class="card-header">
+          Personal details
+        </div>
+        <div class="card-body">
+          <h6 class="card-title">Name: </h6>
+          <h4 class="card-text"><%= @user.name ? @user.name : 'no name set' %></h4>
+
+          <h6 class="card-title">Date of birth: </h6>
+          <h4 class="card-text"><%= @user.dob ? @user.dob : 'no date of birth set' %></h4>
+
+          <%= link_to 'Edit details', edit_profile_path(@user), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  
+
+  <div><%= @user.email %></div>
+  
+</div>

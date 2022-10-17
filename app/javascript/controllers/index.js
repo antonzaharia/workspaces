@@ -7,5 +7,8 @@ import { application } from "./application"
 import HomeController from "./home_controller"
 application.register("home", HomeController)
 
+import ProfilePicController from "./profile_pic_controller"
+application.register("profile-pic", ProfilePicController)
+
 import ToastifyController from "./toastify_controller"
 application.register("toastify", ToastifyController)

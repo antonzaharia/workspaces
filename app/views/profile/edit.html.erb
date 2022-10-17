@@ -1,0 +1,23 @@
+<%= form_for @user, url: update_profile_path(@user) do |f| %>
+
+  <% frame_id = dom_id(@user, 'details_turbo_frame')%>
+  <%= turbo_frame_tag frame_id do %>
+    <div class="card">
+      <div class="card-header">
+        Personal details
+      </div>
+      <div class="card-body">
+        <h6 class="card-title">Name: </h6>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+
+        <h6 class="card-title">Date of birth: </h6>
+        <%= f.date_field :dob, class: 'form-control' %>
+
+        <%= f.button 'Save', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', profile_path(@user), class: 'btn' %>
+      </div>
+    </div>
+  <% end %>
+
+
+<% end %>
