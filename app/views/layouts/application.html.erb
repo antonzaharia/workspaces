@@ -6,16 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# Toastify JS CSS %>
+    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css' %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body data-controller="toastify" data-flash-messages="<%= JSON.dump(flash.to_a) %>">
     <header>
       <%= render partial: 'layouts/navbar' %>
     </header>
     <main class="container">
-      <%= render partial: 'layouts/alerts' %>
       <%= yield %>
     </main>
   </body>
