@@ -14,7 +14,7 @@
   </head>
 
   <body data-controller="toastify" data-flash-messages="<%= JSON.dump(flash.to_a) %>">
-    <%= turbo_frame_tag "modal", class: "modal fade" %>
+    <%= render partial: 'layouts/turbo_modal' %>
     <header>
       <%= render partial: 'layouts/navbar' %>
     </header>

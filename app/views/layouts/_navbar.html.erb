@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      Workspaces
-    </a>
+
+    <%= link_to 'Workspaces', root_path, class: 'navbar-brand' %>
+
     <div class="d-flex flex-nowrap">
       <% if user_signed_in? %>
         

@@ -1,49 +1,21 @@
 import { Controller } from '@hotwired/stimulus'
+import * as bootstrap from 'bootstrap'
 
 // Connects to data-controller="turbo-modal"
 export default class extends Controller {
-  static targets = ['modal']
   connect() {
-    document.addEventListener('turbo:before-stream-render', function (event) {
-      // Add a class to an element we are about to add to the page
-      // as defined by its "data-stream-enter-class"
-      if (event.target.firstElementChild instanceof HTMLTemplateElement) {
-        var enterAnimationClass = event.target.templateContent.firstElementChild.dataset.streamEnterClass
-        if (enterAnimationClass) {
-          event.target.templateElement.content.firstElementChild.classList.add(enterAnimationClass)
-        }
-      }
-
-      // Add a class to an element we are about to remove from the page
-      // as defined by its "data-stream-exit-class"
-      var elementToRemove = document.getElementById(event.target.target)
-      if (elementToRemove) {
-        var streamExitClass = elementToRemove.dataset.streamExitClass
-        if (streamExitClass) {
-          // Intercept the removal of the element
-          event.preventDefault()
-          elementToRemove.classList.add(streamExitClass)
-          // Wait for its animation to end before removing the element
-          elementToRemove.addEventListener('animationend', function () {
-            event.target.performAction()
-          })
-        }
-      }
-    })
+    this.modal = new bootstrap.Modal(this.element)
   }
 
-  closeModal(e) {
-    e.preventDefault()
-    if (e.target.id !== 'schema-form') {
-      document.getElementById('modal').classList.remove('show')
-      document.getElementById('modal').style.display = 'none'
+  open() {
+    if (!this.modal.isOpened) {
+      this.modal.show()
     }
   }
-  modalTargetConnected(element) {
-    document.getElementById('modal').style.display = 'block'
-    document.getElementById('modal').classList.add('show')
-  }
-  modalTargetDisconnected(element) {
-    element.innerHTML = ''
+
+  close(event) {
+    if (event.detail.success) {
+      this.modal.hide()
+    }
   }
 }
