@@ -12,3 +12,12 @@
 .input-min-w {
   min-width: 170px;
 }
+@media (max-width: 767px) {
+  .dropdown-menu {
+    right: 0;
+    width: calc(100vw - 40px);
+  } 
+  .dropdown{
+    position: relative;
+  }
+}
