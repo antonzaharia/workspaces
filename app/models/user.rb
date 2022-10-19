@@ -5,4 +5,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def show_name
+    self.name.presence || 'not set'
+  end
+
+  def show_dob
+    self.dob.presence || 'not set'
+  end
 end

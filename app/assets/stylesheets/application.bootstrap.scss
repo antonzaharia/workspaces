@@ -4,3 +4,8 @@
 @import 'bootswatch/dist/united/bootswatch';
 
 @import './navbar';
+@import './icon-field';
+
+.hidden {
+  display: none !important;
+}
