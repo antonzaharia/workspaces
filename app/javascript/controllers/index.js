@@ -12,3 +12,6 @@ application.register("profile-pic", ProfilePicController)
 
 import ToastifyController from "./toastify_controller"
 application.register("toastify", ToastifyController)
+
+import TurboModalController from "./turbo_modal_controller"
+application.register("turbo-modal", TurboModalController)

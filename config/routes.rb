@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Profile
   get '/u/:user_id', to: 'profile#show', as: :profile
   get '/u/:user_id/edit', to: 'profile#edit', as: :edit_profile
+  get '/u/:user_id/delete', to: 'profile#delete', as: :profile_delete
   # updates
   patch '/u/:user_id', to: 'profile#update', as: :update_profile
   patch '/u/:user_id/icon', to: 'profile#update_icon', as: :update_profile_icon
