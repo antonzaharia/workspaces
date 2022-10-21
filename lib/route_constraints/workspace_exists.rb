@@ -1,7 +1,7 @@
 module RouteConstraints
-  class WorkSpaceExists
+  class WorkspaceExists
     def self.matches?(request)
-      Workspace.find_by_request(request).nil?
+      Workspace.find_by_request(request).present?
     end
   end
 end

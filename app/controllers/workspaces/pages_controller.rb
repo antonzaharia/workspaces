@@ -1,5 +1,5 @@
 module Workspaces
-  class PagesController < WorkspacesBaseController
+  class PagesController < WorkspacesController
     def show
     end
   end

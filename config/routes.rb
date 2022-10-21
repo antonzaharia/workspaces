@@ -2,9 +2,9 @@ require_relative '../lib/route_constraints/workspace_exists'
 
 Rails.application.routes.draw do
   # Workspaces
-  constraints RouteConstraints::WorkSpaceExists do
+  constraints RouteConstraints::WorkspaceExists do
     scope module: :workspaces do 
-      root 'pages#show', as: :workspace_root
+      get '/', to: 'pages#show'
     end
   end
 
