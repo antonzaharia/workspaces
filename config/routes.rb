@@ -1,4 +1,13 @@
+require_relative '../lib/route_constraints/workspace_exists'
+
 Rails.application.routes.draw do
+  # Workspaces
+  constraints RouteConstraints::WorkSpaceExists do
+    scope module: :workspaces do 
+      root 'pages#show', as: :workspace_root
+    end
+  end
+
   devise_for :users, controllers: {
     sessions: 'user/sessions',
     registrations: 'user/registrations'
@@ -17,4 +26,5 @@ Rails.application.routes.draw do
   patch '/u/:user_id', to: 'profile#update', as: :update_profile
   patch '/u/:user_id/icon', to: 'profile#update_icon', as: :update_profile_icon
   patch '/u/:user_id/secure', to: 'profile#update_secure', as: :update_profile_secure
+
 end
