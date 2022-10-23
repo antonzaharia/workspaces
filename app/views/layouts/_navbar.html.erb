@@ -9,8 +9,8 @@
         <div class="nav-item dropdown">
           <%= render partial: 'shared/profile_icon', locals: { user: current_user } %>
           <div area-labelledby="navbarDropdown" class="dropdown-menu" style="right: 0; left: auto;">
-            <%= link_to 'Dasboard', dashboard_path, class: 'dropdown-item' %>
-            <%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %>
+            <%= link_to 'Dasboard', root_path, class: 'dropdown-item' %>
+            <%= link_to 'Profile', profile_url(current_user, subdomain: false), class: 'dropdown-item' %>
             <%= link_to 'Premium', '#', class: 'dropdown-item' %>
             <%= link_to 'Contact', '#', class: 'dropdown-item' %>
             <%= link_to 'Settings', '#', class: 'dropdown-item' %>

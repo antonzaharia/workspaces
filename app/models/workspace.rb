@@ -6,16 +6,6 @@ class Workspace < ApplicationRecord
   end
 
   def self.find_by_request(request)
-    uri = URI(request.original_url)
-    if uri =~
-       /(127.0.0.1?localhost|ngrok.io|192.168|herokuapp.com)/
-      begin
-        find_by(slug: request.params[:slug])
-      rescue StandardError
-        nil
-      end
-    else
-      find_by(slug: request.subdomain)
-    end
+    find_by(slug: request.subdomain)
   end
 end
