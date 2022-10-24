@@ -1,3 +1,26 @@
+/* change the colors */
+$primary: #eb6f45;
+$danger: #dd0000;
+$warning: #c65029;
+$info: #ba7d07;
+
+$body-bg: #f5f5f5;
+
+// Purples
+$purple: #a25c9b;
+$deep_purple: #762a6e;
+$light_purple: #f3bdee;
+
+// Oranges
+$orange: #eb6f45;
+$deep_orange: #c65029;
+$light_orange: #ffaf94;
+
+// Yellow
+$yellow: #ffae11;
+$deep_yellow: #ba7d07;
+$light_yellow: #ffdb95;
+
 @import 'bootswatch/dist/united/variables';
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
@@ -6,9 +29,6 @@
 @import './navbar';
 @import './icon-field';
 
-body {
-  background: #f5f5f5;
-}
 .hidden {
   display: none !important;
 }

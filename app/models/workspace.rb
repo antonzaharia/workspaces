@@ -1,6 +1,9 @@
 class Workspace < ApplicationRecord
   PROTOCOL = 'http://'
 
+  validates :slug, uniqueness: true, length: { minimum: 3 }, allow_nil: true, format: { with: /\A[a-zA-Z0-9\-_]+\z/, message: 'can only include letters, numbers, dashes and underscores. No spaces or other punctuation is allowed' }
+  validates :name, presence: true
+
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
 
   has_one_attached :logo do |attachable|

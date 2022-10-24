@@ -1,19 +1,16 @@
 <div id="new-workspace">
-  <div class="row m-5">
-    <div class="col-lg-8 mx-auto text-center">
-      <h2 class="display-5">New workspace</h2>
-      <p class="lead mb-0">Setup a new workspace.</p>
-      <p class="lead">For more info visit <a href="https://bootstrapious.com/snippets">our about page.</a></p>
-    </div>
-  </div>
+  <div class="row m-5"></div>
 
   <div class="row">
     <div class="col-lg-7 mx-auto">
       <div class="bg-white rounded-lg shadow-sm p-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h4 class="">New workspace</h4>
+        </div>
 
         <div class="tab-content">
           <div id="nav-tab-card" class="tab-pane fade show active">
-            <%= render partial: 'workspaces/form', locals: { workspace: @workspace } %>
+            <%= render "form", workspace: @workspace %>
           </div>
         </div>
 

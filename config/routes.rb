@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   constraints(SubdomainRoutes) do
     devise_for :users, controllers: {
       sessions: 'user/sessions',

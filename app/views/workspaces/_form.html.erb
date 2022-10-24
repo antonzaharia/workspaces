@@ -1,7 +1,26 @@
 <%= form_with(model: workspace) do |form| %>
   <div class="form-group">
-    <%= form.label :name, 'Workspace name' %>
-    <%= form.text_field :name, class: 'form-control', placeholder: 'Company Name', required: true %>
+    <%= form.label :name, 'Workspace name', class: 'my-2' %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Your company name' %>
   </div>
-  <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirm  </button>
+  <div class="form-group">
+    <%= form.label :slug, 'Slug', class: 'my-2' %>
+    <%= form.text_field :slug, class: 'form-control', placeholder: 'YOUR-SLUG.gooff.com', required: true %>
+  </div>
+
+  <% if workspace.errors.any? %>
+    <div class="alert alert-danger mt-5">
+      <p><%= pluralize(workspace.errors.count, "error") %> prohibited this workspace from being saved:</p>
+
+      <ul>
+        <% workspace.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="w-100 d-flex justify-content-end mt-5">
+    <%= form.submit 'Create', class: 'btn btn-primary btn-block rounded-pill shadow-sm' %>
+  </div>
 <% end %>
