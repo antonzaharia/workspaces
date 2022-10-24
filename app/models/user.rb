@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :my_panels, class_name: 'Panel'
+  has_many :my_workspaces, class_name: 'Workspace'
 
   has_one_attached :icon do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]

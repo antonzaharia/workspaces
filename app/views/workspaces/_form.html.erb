@@ -1,0 +1,7 @@
+<%= form_with(model: workspace) do |form| %>
+  <div class="form-group">
+    <%= form.label :name, 'Workspace name' %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Company Name', required: true %>
+  </div>
+  <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirm  </button>
+<% end %>

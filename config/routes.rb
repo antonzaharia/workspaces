@@ -17,9 +17,12 @@ Rails.application.routes.draw do
     patch '/u/:user_id', to: 'profile#update', as: :update_profile
     patch '/u/:user_id/icon', to: 'profile#update_icon', as: :update_profile_icon
     patch '/u/:user_id/secure', to: 'profile#update_secure', as: :update_profile_secure
+    
+    # Workspaces
+    resources :workspaces, only: [:new, :create]
   end
 
-  # Workspaces
+  # Workspaces pages
   constraints(!SubdomainRoutes) do
     scope module: :workspaces do 
       get '/', to: 'pages#show'
