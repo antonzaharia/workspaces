@@ -1,1 +1,2 @@
-Workpsaces::Application.config.session_store :cookie_store, key: '_workspaces_session', domain: 'lvh.me'
+Workpsaces::Application.config.session_store :cookie_store, key: '_workspaces_session', domain: :all
+# Workpsaces::Application.config.session_store :cookie_store, key: '_workspaces_session', domain: 'lvh.me'

@@ -7,11 +7,10 @@
     <%= csp_meta_tag %>
 
     <%# Toastify JS CSS %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css' %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
@@ -20,7 +19,7 @@
     <header>
       <%= render partial: 'layouts/navbar' %>
     </header>
-    <main class="container">
+    <main class="container mx-auto">
       <%= yield %>
     </main>
   </body>

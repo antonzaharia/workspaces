@@ -22,6 +22,21 @@
 
   /* Background */
   --bg: #13111c;
+  --bg-gradient: linear-gradient(327.21deg, rgba(33, 0, 75, 0.24) 3.65%, rgba(60, 0, 136, 0) 40.32%), linear-gradient(245.93deg, rgba(209, 21, 111, 0.16) 0%, rgba(209, 25, 80, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111C;
+
+  /* Text */
+  --text-color: #aeb2c1;
+}
+body {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+
+}
+p, h1, h2, h3, h4, h5, h6, span, li, label, a, div {
+  color: var(--text-color);
+}
+a:hover {
+  text-decoration: underline;
 }
 .hidden {
   display: none !important;
@@ -29,13 +44,17 @@
 
 @layer components {
   .input {
-    @apply block rounded-md border border-gray-300 py-2 px-4 my-2 shadow-sm w-full;
+    @apply bg-gray-600 border border-gray-500 text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
   }
   .checkbox {
-    @apply mr-2 checked:bg-blue-600 checked:border-transparent rounded-lg;
+    @apply bg-gray-600 mr-2 checked:bg-blue-700 checked:border-gray-500 rounded-lg;
   }
   .button {
     @apply my-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  }
+
+  .dropdown-item {
+    @apply block py-2 text-gray-400 rounded bg-transparent;
   }
 }
 
