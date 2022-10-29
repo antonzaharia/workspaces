@@ -75,8 +75,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'bootstrap-sass'
-gem 'bootswatch-rails'
 gem 'devise'
-gem 'devise-bootstrap-views'
-gem 'sassc-rails'
+
+gem "tailwindcss-rails", "~> 2.0"
+

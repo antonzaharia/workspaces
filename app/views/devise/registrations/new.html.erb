@@ -1,40 +1,39 @@
-<div class="container pt-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5">
-            <h1 class="text-center"><%= t('.sign_up') %></h1>
+<div class="container mx-auto">
+  <div class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg">
+    <h1 class=""><%= t('.sign_up') %></h1>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= bootstrap_devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= bootstrap_devise_error_messages! %>
 
-              <div class="form-group my-1">
-                <%= f.label :email %>
-                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-              </div>
-
-              <div class="form-group my-1">
-                <%= f.label :password %>
-                <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-
-                <% if @minimum_password_length %>
-                  <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
-                <% end %>
-              </div>
-
-              <div class="form-group my-1">
-                <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
-              </div>
-
-              <div class="form-group mt-5">
-                <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+      <div class="mb-6">
+        <%= f.label :email, class: 'text-gray-700 font-medium' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input' %>
       </div>
-    </div>
+
+      <div class="mb-6">
+        <%= f.label :password, class: 'text-gray-700 font-medium' %>
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'input' %>
+
+        <% if @minimum_password_length %>
+          <small class="text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+        <% end %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.label :password_confirmation, class: 'text-gray-700 font-medium' %>
+        <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'input' %>
+      </div>
+
+      <div class="flex justify-between items-center mb-3">
+        <div class="mt-auto">
+          <input type="checkbox" id="remember-me" name="remember-me" value="remember-me" class="checkbox">
+          <label for="remember-me" class="text-gray-700 font-normal">Remember Me</label>
+        </div>
+        <a href="#" class="text-blue-700">Forgot your password?</a>
+      </div>
+
+      <%= f.submit 'Sign up', class: 'my-2 text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800' %>
+
+    <% end %>
   </div>
-</div>
 <%= render 'devise/shared/links' %>

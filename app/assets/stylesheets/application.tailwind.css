@@ -1,0 +1,42 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* app components */
+/* @import "./components/card.css"; */
+
+:root {
+   /* Purples */
+  --purple: #a25c9b;
+  --deep_purple: #762a6e;
+  --light_purple: #f3bdee;
+
+   /* Oranges */
+  --orange: #eb6f45;
+  --deep_orange: #c65029;
+  --light_orange: #ffaf94;
+
+   /* Yellow */
+  --yellow: #ffae11;
+  --deep_yellow: #ba7d07;
+  --light_yellow: #ffdb95;
+
+  /* Background */
+  --bg: #13111c;
+}
+.hidden {
+  display: none !important;
+}
+
+@layer components {
+  .input {
+    @apply block rounded-md border border-gray-300 py-2 px-4 my-2 shadow-sm w-full;
+  }
+  .checkbox {
+    @apply mr-2 checked:bg-blue-600 checked:border-transparent rounded-lg;
+  }
+  .button {
+    @apply my-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  }
+}
+
+
