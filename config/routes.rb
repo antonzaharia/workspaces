@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'user/registrations'
-  }
   constraints(SubdomainRoutes) do
+    devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
+    }
     # Home
     root 'home#index'
     get :dashboard, to: 'home#dashboard'
