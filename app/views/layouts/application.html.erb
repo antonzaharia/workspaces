@@ -17,10 +17,11 @@
 
   <body data-controller="toastify" data-flash-messages="<%= JSON.dump(flash.to_a) %>">
     <%= render partial: 'layouts/turbo_modal' %>
-    <header>
-      <%= render partial: 'layouts/navbar' %>
-    </header>
-    <main class="container mx-auto">
+    
+    <main class="container mx-auto max-w-[1200px]">
+      <header>
+        <%= render partial: 'layouts/navbar' %>
+      </header>
       <%= yield %>
     </main>
   </body>
