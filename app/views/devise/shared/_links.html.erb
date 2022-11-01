@@ -1,4 +1,4 @@
-<section class="flex justify-center flex-col content-center">
+<section class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg border-gray-600 border-solid border">
   <%- if controller_name != 'sessions' %>
     <%= link_to "Log in", new_session_path(resource_name), class: 'text-yellow-400' %><br />
   <% end %>
@@ -24,4 +24,4 @@
       <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: 'text-yellow-400' %><br />
     <% end %>
   <% end %>
-</div>
+</section>

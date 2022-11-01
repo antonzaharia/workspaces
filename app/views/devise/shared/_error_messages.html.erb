@@ -8,7 +8,9 @@
     </h2>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="p-4 mb-4 text-sm bg-orange-200 rounded-lg" role="alert">
+          <li class="text-orange-600"><%= message %></li>
+        </div>
       <% end %>
     </ul>
   </div>
