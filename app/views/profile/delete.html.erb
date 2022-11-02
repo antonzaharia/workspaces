@@ -1,17 +1,16 @@
 <%= turbo_frame_tag "turbo-modal", target: "_top" do %>
-  <div class="modal-header">
-    <h3 class="modal-title">Are you sure?</h2>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  </div>
-  <div class="modal-body">
-    <div class="modal-body">
-      <p>You are about to permanetly delete your account.</p>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <%= button_to 'Confirm', registration_path(resource_name), data: { turbo: false }, class: 'btn btn-danger mx-3', method: :delete %>
-    <button type="button" class="btn d-block d-sm-inline-block" data-bs-dismiss="modal" aria-label="Close">
-      Back
-    </button>
+  <div data-controller="turbo-modal"  data-action="turbo:submit-end->turbo-modal#hide">
+
+    <label data-turbo-modal-target="modal" data-action="click->turbo-modal#hide" class="modal cursor-pointer">
+      <label class="modal-box relative">
+        <h3 class="text-lg font-bold">Are you sure?</h3>
+        <p class="py-4">You are about to permanently delete your account.</p>
+        <div class="modal-action">
+          <%= button_to 'Confirm', registration_path(resource_name), data: { turbo: false }, method: :delete %>
+          <%= link_to 'Cancel', profile_url(current_user), data: { action: 'click->turbo-modal#hide' } %>
+        </div>
+      </label>
+    </label>
+
   </div>
 <% end %>

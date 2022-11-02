@@ -2,8 +2,8 @@
   <%# <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
     class="img-fluid rounded-circle" width="35"> %>
   <% if user.icon.present? %>
-    <%= image_tag user.icon.variant(:thumb), class: 'w-8 h-8 rounded-full', alt: 'avatar' %>
+    <%= image_tag user.icon.variant(:thumb), class: 'object-cover w-8 h-8 rounded-full', alt: 'avatar' %>
   <% else %>
-    <%= image_tag 'blank_profile.png', class: 'w-8 h-8 rounded-full', alt: 'avatar' %>
+    <%= image_tag 'blank_profile.png', class: 'object-cover w-8 h-8 rounded-full', alt: 'avatar' %>
   <% end %>
 </div>

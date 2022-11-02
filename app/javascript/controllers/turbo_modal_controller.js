@@ -2,19 +2,14 @@ import { Controller } from '@hotwired/stimulus'
 
 // Connects to data-controller="turbo-modal"
 export default class extends Controller {
-  connect() {
-    // this.modal = new bootstrap.Modal(this.element)
+  static targets = ['modal']
+  connect() {}
+  hide() {
+    this.modalTarget.classList.remove('modal-open')
   }
-
-  open() {
-    // if (!this.modal.isOpened) {
-    //   this.modal.show()
-    // }
+  modalTargetConnected(element) {
+    this.modalTarget.classList.add('modal-open')
   }
-
-  close(event) {
-    // if (event.detail.success) {
-    //   this.modal.hide()
-    // }
+  modalTargetDisconnected(element) {
   }
 }

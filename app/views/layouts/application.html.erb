@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title>Workpsaces</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,7 +16,7 @@
   </head>
 
   <body data-controller="toastify" data-flash-messages="<%= JSON.dump(flash.to_a) %>">
-    <%= render partial: 'layouts/turbo_modal' %>
+    <%= turbo_frame_tag "turbo-modal" %>
     
     <main class="container mx-auto max-w-[1200px]">
       <header>

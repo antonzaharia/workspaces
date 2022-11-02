@@ -30,7 +30,6 @@
 body {
   min-height: 100vh;
   background: var(--bg-gradient);
-
 }
 p, h1, h2, h3, h4, h5, h6, span, li, label, a, div {
   color: var(--text-color);
@@ -40,10 +39,6 @@ a:hover {
 }
 .hidden {
   display: none !important;
-}
-
-button, [type='button'], [type='reset'], [type='submit'], .button {
-  background-color: #762a6e;
 }
 
 @layer components {

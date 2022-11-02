@@ -19,8 +19,14 @@ export default class extends Controller {
         }
       }
     }
-    $('#uploaded-pic').on('change', function () {
+    $('#uploaded-pic').on('change', function (e) {
       showImage(this)
+      const button = document.getElementById('save-button')
+
+      button.disabled = false
+      if (button.classList.contains('hidden')) {
+        button.classList.remove('hidden')
+      }
     })
   }
 }

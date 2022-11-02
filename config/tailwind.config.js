@@ -138,5 +138,16 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('nightwind'),
     require('flowbite/plugin'),
+    require('daisyui'),
   ],
+  daisyui: {
+    styled: true,
+    themes: ['night'],
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: '',
+    darkTheme: 'night',
+  },
 }

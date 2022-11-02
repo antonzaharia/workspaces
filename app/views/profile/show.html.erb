@@ -1,5 +1,5 @@
-<div class="container mx-auto font-sans antialiased z-0" id="profile-page">
-  <div class="container mx-auto my-40">
+<div class="container mx-auto font-sans antialiased z-0 pb-20" id="profile-page">
+  <div class="container mx-auto mt-40">
     <div>
       <div class="bg-white relative shadow rounded-lg w-5/6 md:w-4/6  lg:w-3/6 mx-auto">
 
@@ -9,9 +9,9 @@
               <label for="uploaded-pic">
                 <div class="flex justify-center w-full">
                   <% if current_user.icon.attached? %>
-                    <%= image_tag current_user.icon, class: 'rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110', id: 'pic-preview' %>
+                    <%= image_tag current_user.icon, class: 'object-cover rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110', id: 'pic-preview' %>
                   <% else %>
-                    <%= image_tag 'blank_profile', class: 'rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110', id: 'pic-preview' %>
+                    <%= image_tag 'blank_profile', class: 'object-cover rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110', id: 'pic-preview' %>
                   <% end %>
                 </div>
               </label>
@@ -25,8 +25,8 @@
               <div class="flex flex-col mt-5 px-5">
                 <label for="uploaded-pic" class="py-2">Your profile pic</label>
                 <div>
-                  <%= f.file_field :icon, autofocus: true, class: '', id: 'uploaded-pic' %>
-                  <%= f.button 'Save', class: 'my-2 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800', id: 'save-button' %>
+                  <%= f.file_field :icon, class: 'file-input w-full max-w-xs', id: 'uploaded-pic' %>
+                  <%= f.button 'Save', disabled: true, class: 'btn btn-primary hidden', id: 'save-button' %>
                 </div>
               </div>
             </div>
@@ -102,7 +102,19 @@
             </div>
           </div>
 
+          <div class="mt-16">
+            <h3 class="font-medium text-gray-900 text-left px-6">Unhappy?</h3>
+            <div data-controller="turbo-modal" class="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
+              <%= link_to profile_delete_path(@user), data: { turbo_frame: 'turbo-modal' } do %>
+                Delete your account
+              <% end %>
+            </div>
+          </div>
+
+          
         </div>
       </div>
     </div>
   </div> 
+
+
