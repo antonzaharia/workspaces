@@ -4,7 +4,12 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static targets = ['modal']
   connect() {}
-  hide() {
+  hide(e) {
+    if (e.target.classList.contains('modal')) {
+      this.modalTarget.classList.remove('modal-open')
+    }
+  }
+  cancel() {
     this.modalTarget.classList.remove('modal-open')
   }
   modalTargetConnected(element) {
