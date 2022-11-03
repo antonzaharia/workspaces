@@ -19,7 +19,7 @@ export default class extends Controller {
         }
       }
     }
-    $('#uploaded-pic').on('change', function (e) {
+    $('#Icon_uploaded-pic').on('change', function (e) {
       showImage(this)
       const button = document.getElementById('save-button')
 

@@ -4,6 +4,6 @@
   <% if user.icon.present? %>
     <%= image_tag user.icon.variant(:thumb), class: 'object-cover w-8 h-8 rounded-full', alt: 'avatar' %>
   <% else %>
-    <%= image_tag 'blank_profile.png', class: 'object-cover w-8 h-8 rounded-full', alt: 'avatar' %>
+    <%= image_tag 'blank_profile.png', class: 'w-8 h-8 rounded-full', alt: 'avatar' %>
   <% end %>
 </div>

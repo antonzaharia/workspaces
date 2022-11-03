@@ -26,37 +26,37 @@
 
   <% frame_id = dom_id(@user, 'secure_turbo_frame')%>
   <%= turbo_frame_tag frame_id do %>
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :email %></td>
-            <td class="py-4 px-6">
-              <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input min-w-[160px]' %>
-            </td>
-          </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :password %></td>
-            <td class="py-4 px-6">
-              <%= f.password_field :password, autocomplete: 'new-password', class: 'input min-w-[160px]' %>
-              <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
-            </td>
-          </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :password_confirmation %></td>
-            <td class="py-4 px-6">
-              <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input min-w-[160px]'  %>
-              <small class="form-text text-muted"><%= t('.password_confirmation') %></small>
-            </td>
-          </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :current_password %></td>
-            <td class="py-4 px-6">
-              <%= f.password_field :current_password, autocomplete: 'current-password', required: true, class: 'input min-w-[160px]' %>
-              <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_any_changes') %></small>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :email %></td>
+          <td class="py-4 px-6">
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input min-w-[160px]' %>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :password %></td>
+          <td class="py-4 px-6">
+            <%= f.password_field :password, autocomplete: 'new-password', class: 'input min-w-[160px]' %>
+            <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :password_confirmation %></td>
+          <td class="py-4 px-6">
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input min-w-[160px]'  %>
+            <small class="form-text text-muted"><%= t('.password_confirmation') %></small>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="py-4 px-6 font-medium text-gray-900 dark:text-white"><%= f.label :current_password %></td>
+          <td class="py-4 px-6">
+            <%= f.password_field :current_password, autocomplete: 'current-password', required: true, class: 'input min-w-[160px]' %>
+            <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_any_changes') %></small>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <div class="mt-5 w-full flex justify-end overflow-hidden text-sm gap-2">
       <%= link_to 'Cancel', profile_path(@user), class: 'text-grey-700 bg-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center' %>
       <%= f.button 'Save', class: 'mr-5 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800' %>
