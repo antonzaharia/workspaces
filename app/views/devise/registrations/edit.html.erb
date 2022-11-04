@@ -1,6 +1,6 @@
-<div class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg border-gray-600 border-solid border">
-  <div class="mt-20">
-    <h1 class="font-bold text-center text-3xl text-gray-100">Edit <%= resource_name.to_s.humanize %></h1>
+<div class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg bg-white border-gray-600 border-solid border">
+  <div class="mt-10">
+    <h1 class="font-bold text-center text-3xl text-gray-900">Edit <%= resource_name.to_s.humanize %></h1>
     <p class="text-center text-sm text-gray-400 font-medium">Secured details</p>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
