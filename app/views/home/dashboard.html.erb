@@ -1,4 +1,6 @@
-<%= link_to 'New Workspace', new_workspace_path, class: "btn btn-primary my-3" %>
+<div class="text-center">
+  <%= link_to 'New Workspace', new_workspace_path, class: "btn btn-primary my-3" %>
+</div>
 
 <% current_user.my_workspaces.order(created_at: :desc).each do |workspace| %>
   <div class="card mb-3">

@@ -1,20 +1,7 @@
 <div id="new-workspace">
-  <div class="row m-5"></div>
+  <div class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg border-gray-600 border-solid border">
+    <h1 class="text-center text-2xl">New workspace</h4>
 
-  <div class="row">
-    <div class="col-lg-7 mx-auto">
-      <div class="bg-white rounded-lg shadow-sm p-5">
-        <div class="col-lg-8 mx-auto text-center">
-          <h4 class="">New workspace</h4>
-        </div>
-
-        <div class="tab-content">
-          <div id="nav-tab-card" class="tab-pane fade show active">
-            <%= render "form", workspace: @workspace %>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    <%= render "form", workspace: @workspace %>
   </div>
 </div>
