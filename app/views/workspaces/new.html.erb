@@ -1,7 +1,10 @@
-<div id="new-workspace">
-  <div class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg border-gray-600 border-solid border">
-    <h1 class="text-center text-2xl">New workspace</h4>
+<%= turbo_frame_tag 'new_workspace' do %>
+  <div id="new-workspace">
+    <div class="mx-auto my-10 rounded-lg shadow p-10 max-w-lg border-gray-600 border-solid border">
+      <h1 class="text-center text-2xl">New workspace</h4>
 
-    <%= render "form", workspace: @workspace %>
+      <%= render "form", workspace: @workspace %>
+      <%= link_to 'Cancel', dashboard_path, class: 'mt-3 btn w-full btn-ghost' %>
+    </div>
   </div>
-</div>
+<% end %>

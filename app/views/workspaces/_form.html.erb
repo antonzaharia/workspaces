@@ -3,9 +3,13 @@
     <%= form.label :name, 'Workspace name', class: 'label-text' %>
     <%= form.text_field :name, class: 'input input-bordered input-primary w-full', placeholder: 'Your company name' %>
   </div>
+  
   <div class="w-full mt-5">
     <%= form.label :slug, 'Slug', class: 'label-text' %>
-    <%= form.text_field :slug, class: 'input input-bordered input-primary w-full', placeholder: 'YOUR-SLUG.gooff.com', required: true %>
+    <label class="input-group">
+      <%= form.text_field :slug, class: 'input input-bordered input-primary w-full', placeholder: 'your-slug', required: true %>
+      <span class="border border-gray-600">.<%= request.host %></span>
+    </label>
   </div>
 
   <% if workspace.errors.any? %>
@@ -21,6 +25,6 @@
   <% end %>
 
   <div class="w-100 d-flex justify-content-end mt-5">
-    <%= form.submit 'Create', class: 'btn w-full' %>
+    <%= form.submit 'Create', class: 'btn w-full btn-secondary' %>
   </div>
 <% end %>

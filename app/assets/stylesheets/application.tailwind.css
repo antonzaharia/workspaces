@@ -38,6 +38,9 @@ p, h1, h2, h3, h4, h5, h6, span, li, label, a, div {
   display: none !important;
 }
 
+.btn-secondary, button, button input[type='button'], button input[type='submit'] {
+  background-color: hsl(var(--s)/var(--tw-bg-opacity));
+}
 @layer components {
   .input {
     @apply bg-gray-600 border border-gray-500 text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
