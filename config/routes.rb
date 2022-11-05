@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :workspace_users
+
   constraints(SubdomainRoutes) do
     devise_for :users, controllers: {
       sessions: 'users/sessions',
@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   # Workspaces pages
   constraints(!SubdomainRoutes) do
     scope module: :workspaces do 
-      get '/', to: 'pages#show'
+      get '/', to: 'pages#show', as: :workspace_home
+
+      resources :workspace_users
     end
   end
 end
