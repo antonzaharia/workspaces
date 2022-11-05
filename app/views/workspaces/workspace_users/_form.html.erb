@@ -12,16 +12,13 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :workspace_id %>
-    <%= form.number_field :workspace_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :email, class: 'input-group' do %>
+      <span class="border border-gray-700">Email</span>
+      <%= form.email_field :email, class: "input input-bordered", placeholder: 'user@site.com' %>
+    <% end %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit 'Send', class: "btn w-full btn-secondary" %>
   </div>
 <% end %>
