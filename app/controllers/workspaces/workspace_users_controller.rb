@@ -30,7 +30,7 @@ module Workspaces
       user = User.find_by(email: workspace_user_params[:email])
       @workspace_user = @workspace.workspace_users.new(email: workspace_user_params[:email])
       if user
-        @workspace_user = user
+        @workspace_user.user = user
         @workspace_user.has_account = true
       end
 
@@ -73,10 +73,7 @@ module Workspaces
     def destroy
       @workspace_user.destroy
 
-      respond_to do |format|
-        format.html { redirect_to workspace_users_url, notice: 'Workspace user was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      redirect_to workspace_home_path
     end
 
     private

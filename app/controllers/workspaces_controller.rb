@@ -64,6 +64,7 @@ class WorkspacesController < ApplicationController
 
   # DELETE /workspaces/1 or /workspaces/1.json
   def destroy
+    @workspace.workspace_users.delete_all
     @workspace.destroy
 
     redirect_to workspace_home_path
