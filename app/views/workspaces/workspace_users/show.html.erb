@@ -1,15 +1,15 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<%= turbo_frame_tag "turbo-modal" do %>
+  <div data-controller="turbo-modal"  data-action="turbo:submit-end->turbo-modal#cancel">
 
-    <%= render @workspace_user %>
-
-    <%= link_to 'Edit this workspace_user', edit_workspace_user_path(@workspace_user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this workspace_user', workspace_user_path(@workspace_user), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div data-turbo-modal-target="modal" data-action="click->turbo-modal#hide" class="modal">
+      <div class="modal-box relative">
+        <h3 class="text-lg font-bold"><%= @workspace_user.show_name %></h3>
+        <p class="py-4">Details</p>
+        <div class="modal-action">
+          <%= button_tag 'Cancel', data: { action: 'click->turbo-modal#cancel' }, class: 'btn btn-ghost' %>
+        </div>
+      </div>
     </div>
-    <%= link_to 'Back to workspace_users', workspace_users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
   </div>
-</div>
+<% end %>

@@ -13,7 +13,7 @@
     </div>
   </td>
   <th data-controller="turbo-modal">
-    <button class="btn btn-ghost btn-xs">Details</button>
+    <%= link_to 'Details', workspace_user_path(workspace_user), data: { turbo_frame: 'turbo-modal' }, class: 'btn btn-ghost btn-xs' %>
     <%= link_to 'Delete', workspace_user_delete_path(workspace_user), data: { turbo_frame: 'turbo-modal' }, class: 'btn btn-error btn-xs btn-outline' %>
   </th>
 </tr>
