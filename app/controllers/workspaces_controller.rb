@@ -19,15 +19,30 @@ class WorkspacesController < ApplicationController
   def edit
   end
 
+  def delete
+    @workspace = Workspace.find(params[:workspace_id])
+  end
+
   # POST /workspaces or /workspaces.json
   def create
     @workspace = current_user.my_workspaces.new(workspace_params)
 
     respond_to do |format|
       if @workspace.save
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_workspace', partial: 'workspaces/form', locals: { workspace: Workspace.new }),
+            turbo_stream.prepend('workspace_index', partial: 'workspaces/workspace', locals: { workspace: @workspace })
+          ]
+        end
         format.html { redirect_to dashboard_path, allow_other_host: true, notice: 'Workspace was successfully created.' }
         format.json { render :show, status: :created, location: @workspace }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_workspace', partial: 'workspaces/form', locals: { workspace: @workspace } ),
+          ]
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @workspace.errors, status: :unprocessable_entity }
       end
@@ -51,10 +66,7 @@ class WorkspacesController < ApplicationController
   def destroy
     @workspace.destroy
 
-    respond_to do |format|
-      format.html { redirect_to workspaces_url, notice: 'Workspace was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to workspace_home_path
   end
 
   private

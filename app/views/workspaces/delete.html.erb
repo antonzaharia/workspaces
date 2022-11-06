@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "turbo-modal" do %>
+  <div data-controller="turbo-modal"  data-action="turbo:submit-end->turbo-modal#cancel">
+
+    <div data-turbo-modal-target="modal" data-action="click->turbo-modal#hide" class="modal">
+    
+      <div class="modal-box relative">
+        <h3 class="text-lg font-bold">Are you sure?</h3>
+        <p class="py-4">You are about to permanently delete <%= @workspace.name %>.</p>
+        <div class="modal-action">
+          <%= button_to 'Confirm', workspace_path(@workspace), method: :delete,  data: { turbo: false }, class: 'btn btn-active btn-error' %>
+          <%= button_tag 'Cancel', data: { action: 'click->turbo-modal#cancel' }, class: 'btn btn-ghost' %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+<% end %>

@@ -20,6 +20,11 @@ module Workspaces
     def edit
     end
 
+    # GET /workspace_users/1/delete
+    def delete
+      @workspace_user = WorkspaceUser.find(params[:workspace_user_id])
+    end
+
     # POST /workspace_users or /workspace_users.json
     def create
       user = User.find_by(email: workspace_user_params[:email])

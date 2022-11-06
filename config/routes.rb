@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     patch '/u/:user_id/secure', to: 'profile#update_secure', as: :update_profile_secure
     
     # Workspaces
-    resources :workspaces, only: [:new, :create]
+    resources :workspaces, only: [:new, :create, :destroy] do
+      get :delete
+    end
   end
 
   # Workspaces pages
@@ -27,7 +29,9 @@ Rails.application.routes.draw do
     scope module: :workspaces do 
       get '/', to: 'pages#show', as: :workspace_home
 
-      resources :workspace_users
+      resources :workspace_users do 
+        get :delete
+      end
     end
   end
 end

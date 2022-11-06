@@ -4,4 +4,8 @@ class WorkspaceUser < ApplicationRecord
   
   validates :email, presence: true
   validates :status, inclusion: { in: %w[accepted declined pending] }
+
+  def show_name
+    user&.name || email
+  end
 end
