@@ -1,5 +1,29 @@
-<%= turbo_frame_tag 'new_workspace_users' do %>
+<%= turbo_frame_tag 'new_workspace_user' do %>
   <div class="text-center">
     <%= link_to 'Add member', new_workspace_user_path, class: 'btn btn-secondary' %>
   </div>
 <% end %>
+
+
+<div class="overflow-x-auto w-full">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="workspace_user_index" class="member-list">
+      <!-- row 1 -->
+      <%= render @workspace_users %>
+    <!-- foot -->
+    <tfoot>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </tfoot>
+    
+  </table>
+</div>

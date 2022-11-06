@@ -1,17 +1,18 @@
-<div id="<%= dom_id workspace_user %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= workspace_user.user_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Workspace:</strong>
-    <%= workspace_user.workspace_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this workspace user", workspace_user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this workspace user', edit_workspace_user_path(workspace_user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+<tr id="<%= dom_id workspace_user %>">
+  <td>
+    <div class="flex items-center space-x-3">
+      <div class="avatar">
+        <div class="mask mask-squircle w-12 h-12">
+          <%= render partial: 'shared/profile_icon', locals: { user: workspace_user.user } %>
+        </div>
+      </div>
+      <div>
+        <div class="font-bold"><%= workspace_user.email %></div>
+        <div class="text-sm opacity-50 <%= workspace_user.status %>"><%= workspace_user.status %></div>
+      </div>
+    </div>
+  </td>
+  <th>
+    <button class="btn btn-ghost btn-xs">details</button>
+  </th>
+</tr>
