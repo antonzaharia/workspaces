@@ -20,7 +20,7 @@
     
     <main class="container mx-auto max-w-[1200px]">
       <header>
-        <%= render partial: 'layouts/navbar', locals: { logo: 'Workspaces' } %>
+        <%= render partial: 'layouts/navbar', locals: { logo: @workspace&.name || 'Workspaces' } %>
       </header>
       <%= yield %>
     </main>
