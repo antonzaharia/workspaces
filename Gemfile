@@ -76,6 +76,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'mailtrap'
 
 gem "tailwindcss-rails", "~> 2.0"
 
