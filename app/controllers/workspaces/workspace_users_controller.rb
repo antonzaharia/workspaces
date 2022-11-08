@@ -29,6 +29,7 @@ module Workspaces
     def create
       user = User.find_by(email: workspace_user_params[:email])
       @workspace_user = @workspace.workspace_users.new(email: workspace_user_params[:email])
+      
       if user
         @workspace_user.user = user
         @workspace_user.has_account = true
