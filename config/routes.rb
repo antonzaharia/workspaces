@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     scope module: :workspaces do 
       get '/', to: 'pages#show', as: :workspace_home
 
+
+      post :accept_invite, to: 'pages#accept_invite'
+      post :decline_invite, to: 'pages#decline_invite'
       resources :workspace_users do 
         get :delete
       end

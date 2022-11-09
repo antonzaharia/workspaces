@@ -20,4 +20,16 @@ class User < ApplicationRecord
   def show_dob
     self.dob.presence || 'not set'
   end
+
+  def status(workspace)
+    workspace.workspace_users.find_by(user: self)&.status
+  end
+
+  def accepted?(workspace)
+    status(workspace) == 'accepted'
+  end
+
+  def owner?(workspace)
+    workspace.owner == self
+  end
 end
