@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   # Created
   has_many :my_workspaces, class_name: 'Workspace'
+
+  has_many :workspace_users
   # Is member of 
   has_many :workspaces, through: :workspace_users
   
-  has_many :workspace_users
 
   has_one_attached :icon do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]

@@ -9,4 +9,8 @@
     <%= render partial: 'workspaces/workspace', locals: { workspace: workspace } %>
   <% end %>
 </div>
-
+<div id="workspace_users_index">
+  <% current_user.workspaces.order(created_at: :desc).each do |workspace| %>
+    <%= render partial: 'workspaces/workspace', locals: { workspace: workspace } %>
+  <% end %>
+</div>

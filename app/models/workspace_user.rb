@@ -3,7 +3,7 @@ class WorkspaceUser < ApplicationRecord
   belongs_to :workspace
   
   validates :email, presence: true
-  validate :uniqueness_for_same_workspace
+  validate :uniqueness_for_same_workspace, on: :create
   validates :status, inclusion: { in: %w[accepted declined pending] }
 
   def show_name

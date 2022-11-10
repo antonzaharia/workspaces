@@ -36,7 +36,7 @@
                 <%= link_to 'Settings', '#', class: 'dropdown-item', data: {action: "click->dropdown#toggle"} %>
               </li>
               <li>
-                <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item w-full text-left border-t bg-white' %>
+                <%= button_to 'Sign out', destroy_user_session_path(subdomain: false), method: :delete, class: 'dropdown-item w-full text-left border-t bg-white' %>
               </li>
 
             </ul>

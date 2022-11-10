@@ -10,9 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    invites = WorkspaceUser.all.where(email: @user.email)
+    invites.each do |invite|
+      invite.update(user: @user, has_account: true)
+    end
+  end
 
   # GET /resource/edit
   # def edit
