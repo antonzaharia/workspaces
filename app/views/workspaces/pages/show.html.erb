@@ -1,39 +1,42 @@
-<% if current_user.owner?(@workspace) || current_user.accepted?(@workspace) %>
-  <%= turbo_frame_tag 'new_workspace_user' do %>
-    <div class="text-center my-5">
-      <%= link_to 'Add member', new_workspace_user_path, class: 'btn btn-secondary' %>
+<%= turbo_frame_tag 'workspace_pages_show' do %>
+  <% if current_user.owner?(@workspace) || current_user.accepted?(@workspace) %>
+    <%= turbo_frame_tag 'new_workspace_user' do %>
+      <div class="text-center my-5">
+        <%= link_to 'Add member', new_workspace_user_path, class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+
+
+    <div class="overflow-x-auto w-full">
+      <table class="table w-full">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="workspace_user_index" class="member-list">
+          <!-- row 1 -->
+          <%= render @workspace_users %>
+          <!-- foot -->
+        <tfoot>
+          <tr>
+            <th>Member</th>
+            <th></th>
+          </tr>
+        </tfoot>
+        
+      </table>
     </div>
+  <% else %>
+    You must accept the invitation first.
+    <%= form_for :member, url: accept_invite_path(@workspace) do |f| %>
+      <%= f.submit 'Accept', class: 'btn' %>
+    <% end %>
+    <%= form_for :member, url: decline_invite_path(@workspace) do |f| %>
+      <%= f.submit 'Decline', class: 'btn' %>
+    <% end %>
   <% end %>
 
-
-  <div class="overflow-x-auto w-full">
-    <table class="table w-full">
-      <!-- head -->
-      <thead>
-        <tr>
-          <th>Member</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="workspace_user_index" class="member-list">
-        <!-- row 1 -->
-        <%= render @workspace_users %>
-        <!-- foot -->
-      <tfoot>
-        <tr>
-          <th>Member</th>
-          <th></th>
-        </tr>
-      </tfoot>
-      
-    </table>
-  </div>
-<% else %>
-  You must accept the invitation first.
-  <%= form_for :member, url: accept_invite_path(@workspace) do |f| %>
-    <%= f.submit 'Accept', class: 'btn' %>
-  <% end %>
-  <%= form_for :member, url: decline_invite_path(@workspace) do |f| %>
-    <%= f.submit 'Decline', class: 'btn' %>
-  <% end %>
 <% end %>

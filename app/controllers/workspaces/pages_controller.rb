@@ -9,13 +9,7 @@ module Workspaces
       workspace_user = @workspace.workspace_users.find_by(user: current_user)
       workspace_user.update(status: 'completed')
 
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.update('workspace_pages_show', template: 'workspaces/pages/show')
-          ]
-        end
-      end
+      redirect_to workspace_home_path
     end
 
     def decline_invite

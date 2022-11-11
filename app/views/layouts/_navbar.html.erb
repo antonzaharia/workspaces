@@ -21,7 +21,7 @@
             </div>
             <ul class="py-1 md:w-full" aria-labelledby="user-menu-button">
               <li>
-                <%= link_to 'Dasboard', root_path, class: 'dropdown-item' %>
+                <%= link_to 'Dasboard', root_url(only_path: false, subdomain: false), class: 'dropdown-item' %>
               </li>
               <li>
                 <%= link_to 'Profile', profile_url(current_user, subdomain: false), class: 'dropdown-item', data: {action: "click->dropdown#toggle"} %>
@@ -35,9 +35,25 @@
               <li>
                 <%= link_to 'Settings', '#', class: 'dropdown-item', data: {action: "click->dropdown#toggle"} %>
               </li>
-              <li>
-                <%= button_to 'Sign out', destroy_user_session_path(subdomain: false), method: :delete, class: 'dropdown-item w-full text-left border-t bg-white' %>
-              </li>
+              <% if @workspace.blank? %>
+                <li>
+                  <%= button_to destroy_user_session_path, method: :delete, class: 'dropdown-item hover:bg-gray-100 w-full text-left border-t bg-white flex items-center gap-1.5' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 p-1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                    </svg>
+                    <span class="text-gray-700">Sign out</span>
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to root_url(only_path: false, subdomain: false), class: 'dropdown-item hover:bg-gray-100 w-full text-left border-t bg-white flex items-center gap-1.5' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 p-1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    <span class="text-gray-700">Back</span>
+                  <% end %>
+                </li>
+              <% end %>
 
             </ul>
           </div>

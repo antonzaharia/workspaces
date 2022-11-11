@@ -1,6 +1,12 @@
 class WorkspacesController < ApplicationController
   before_action :set_workspace, only: [:show,:edit,:update,:destroy]
 
+  def signout
+    sign_out(current_user)
+
+    redirect_to root_url(subdomain: false), allow_other_host: true
+  end
+
   # GET /workspaces or /workspaces.json
   def index
     @workspaces = Workspace.all
