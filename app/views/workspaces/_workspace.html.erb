@@ -1,4 +1,4 @@
-<%= link_to workspace.url(request), target: "_blank", class: 'flex justify-between items-center m-6 p-6 block rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:bg-gray-100 hover:bg-gray-700' do %>
+<%= link_to workspace.url(request), class: 'flex justify-between items-center m-6 p-6 block rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:bg-gray-100 hover:bg-gray-700' do %>
   <div>
     <h5 class="whitespace-nowrap text-ellipsis overflow-hidden mb-2 text-2xl font-bold tracking-tight text-white"><%= workspace.name %></h5>
     <p class="font-normal text-gray-400"><%= workspace.workspace_users.size %> members</p>
