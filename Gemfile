@@ -70,9 +70,31 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'database_cleaner'
+  gem 'formulaic'
+  gem 'launchy'
+  gem 'stripe-ruby-mock', require: 'stripe_mock'
+  gem 'timecop'
+  gem 'vcr'
+  gem 'webmock'
+
+  gem 'email_spec'
+  gem 'fabrication'
+  gem 'rspec-rails'
+
   gem 'capybara'
+  gem 'capybara-email'
+  gem 'capybara-screenshot'
+  gem 'capybara-selenium'
+  gem 'cucumber'
+  gem 'cucumber-rails', require: false
+
+  gem 'rack_session_access'
+  gem 'rails-controller-testing'
+  gem 'rspec_junit_formatter', '0.2.2'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov', require: false
 end
 
 gem 'devise'
