@@ -1,3 +1,5 @@
+require 'pry'
+
 And(/^binding\.pry$/) do
   binding.pry
 end
@@ -16,6 +18,14 @@ end
 
 When(/^I fill in the following form details( safely)?:$/) do |safely, table|
   fill_in_form_details(safely: safely, table: table)
+end
+
+And(/^I check the checkbox "([^"]+)"$/) do |option|
+  check option
+end
+
+And(/I click on the selector "([^"]+)" from the container "([^"]+)"/) do |selector, container|
+  find(container).find(selector).click
 end
 
 Given(/^a user exists with the following attributes:$/) do |table|

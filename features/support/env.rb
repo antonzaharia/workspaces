@@ -4,21 +4,9 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
-require 'simplecov'
-SimpleCov.start 'rails'
-SimpleCov.coverage_dir "#{ENV.fetch('CUCUMBER_COV_PATH', 'coverage/cucumber')}"
-
 require 'cucumber/rails'
-require 'capybara/cucumber'
-require 'webmock/cucumber'
-require 'rack_session_access/capybara'
-require 'selenium/webdriver'
 
-# Make sure this require is after you require cucumber/rails/world.
-#require 'email_spec' # add this line if you use spork
-require 'email_spec/cucumber'
-
-WebMock.disable_net_connect!(allow_localhost: true)
+# frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -47,20 +35,20 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
+  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
 #   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
-#     # { :except => [:widgets] } may not do what you expect here
+#     # { except: [:widgets] } may not do what you expect here
 #     # as Cucumber::Rails::Database.javascript_strategy overrides
 #     # this setting.
 #     DatabaseCleaner.strategy = :truncation
 #   end
 #
-#   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
+#   Before('not @no-txn', 'not @selenium', 'not @culerity', 'not @celerity', 'not @javascript') do
 #     DatabaseCleaner.strategy = :transaction
 #   end
 #
@@ -69,55 +57,9 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-Capybara.default_max_wait_time = 10
-Capybara.always_include_port = true
-
-# Capybara::Screenshot.webkit_options = {width: 1280, height: 768}
-
-if ENV['CHROMEDRIVER_PATH']
-  Selenium::WebDriver::Chrome::Service.driver_path = ENV['CHROMEDRIVER_PATH']
-end
-
-Capybara.register_driver :chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-
-  [
-    'window-size=1280x1280',
-    'disable-gpu', # https://developers.google.com/web/updates/2017/04/headless-chrome
-    'use-fake-device-for-media-stream', # Because CircleCI doesn't have a webcam :P
-    'use-fake-ui-for-media-stream' # Bypasses the browser alert for allowing access to camera
-  ].each { |arg| options.add_argument(arg) }
-
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-
-end
-
-Capybara.register_driver :headless_chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-
-  [
-    'headless',
-    'window-size=1280x1280',
-    'disable-gpu', # https://developers.google.com/web/updates/2017/04/headless-chrome
-    'use-fake-device-for-media-stream', # Because CircleCI doesn't have a webcam :P
-    'use-fake-ui-for-media-stream' # Bypasses the browser alert for allowing access to camera
-  ].each { |arg| options.add_argument(arg) }
-
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-end
-
-# Screenshot for chrome
-Capybara::Screenshot.register_driver(:chrome) do |driver, path|
-  driver.browser.save_screenshot(path)
-end
-
-# Screenshot for headless chrome
-Capybara::Screenshot.register_driver(:headless_chrome) do |driver, path|
-  driver.browser.save_screenshot(path)
-end
 
 if ENV['SHOW_BROWSER'] == 'true'
-  Capybara.javascript_driver = :chrome
+  Capybara.javascript_driver = :selenium_chrome
 else
   Capybara.javascript_driver = :headless_chrome
 end
