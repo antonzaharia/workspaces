@@ -88,13 +88,7 @@ group :test do
   gem 'capybara-selenium'
   gem 'cucumber'
   gem 'cucumber-rails', require: false
-
-  gem 'rack_session_access'
-  gem 'rails-controller-testing'
-  gem 'rspec_junit_formatter', '0.2.2'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 3.1'
-  gem 'simplecov', require: false
 end
 
 gem 'devise'
