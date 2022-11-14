@@ -12,6 +12,10 @@ And(/^I click "([^"]+)"$/) do |label|
   click_on label
 end
 
+And(/^I should see toast "([^"]+)"$/) do |text|
+  find('.toastify', text: text)
+end
+
 When(/^I fill in "(.+)" with "(.+)"$/) do |field, value|
   fill_in field, with: value
 end
@@ -45,7 +49,7 @@ def extract_attributes_from_table(table)
     if string_value.blank?
       value = nil
     elsif string_value.match(/^(\d+)\.(seconds?|minutes?|hours?|days?|weeks?|months?|years?).ago$/)
-      value = DateTime.now.advance($2.to_sym => ($1.to_i)*-1)
+      value = DateTime.now.advance(Regexp.last_match(2).to_sym => (Regexp.last_match(1).to_i)*-1)
     else
       value = string_value
     end
@@ -59,7 +63,7 @@ def complete_form_field(safely:, field:, value:)
     page.fill_in(field, with: '')
 
     element = page.all("##{field}", wait: 0.1).first || page.all("[name='#{field}']", wait: 0.1).first
-    value.split('').each do |char|
+    value.split.each do |char|
       element.send_keys(char)
     end
 

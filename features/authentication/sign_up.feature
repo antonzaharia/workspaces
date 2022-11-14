@@ -9,5 +9,4 @@ Feature: User sign in
       | user_password              | password!     |
       | user_password_confirmation | password!     |
     And I click on the selector "input[type=submit]" from the container ".actions"
-
-    And binding.pry
+    And I should see toast "Welcome! You have signed up successfully."
