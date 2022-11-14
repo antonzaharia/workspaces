@@ -26,11 +26,8 @@ Rails.application.routes.draw do
 
   # Workspaces pages
   constraints(!SubdomainRoutes) do
-    delete '/users/sign_out', to: 'workspaces#signout'
-    
     scope module: :workspaces do 
       get '/', to: 'pages#show', as: :workspace_home
-
 
       post :accept_invite, to: 'pages#accept_invite'
       post :decline_invite, to: 'pages#decline_invite'

@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_subdomain
-    redirect_to root_url(subdomain: nil), allow_other_host: true if current_workspace.blank? && request.subdomain.present?
+    redirect_to root_url(subdomain: nil), allow_other_host: true if request.subdomain.present? && current_workspace.blank?
   end
 end

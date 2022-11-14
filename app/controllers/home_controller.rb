@@ -1,8 +1,12 @@
 class HomeController < ApplicationController
   before_action :redirect_to_dashboard, only: [:index]
   before_action :redirect_to_auth, only: [:dashboard]
+  
   def index; end
-  def dashboard; end
+
+  def dashboard
+    render :dashboard
+  end
 
   private
 
