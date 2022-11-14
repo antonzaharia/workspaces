@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require 'factory_bot_rails'
 
 # frozen_string_literal: true
 
