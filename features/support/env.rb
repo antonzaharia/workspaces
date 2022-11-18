@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'factory_bot_rails'
+require 'email_spec/cucumber'
 
 # frozen_string_literal: true
 

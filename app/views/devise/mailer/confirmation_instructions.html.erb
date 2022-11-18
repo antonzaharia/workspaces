@@ -1,5 +1,6 @@
-<p>Welcome <%= @email %>!</p>
+<div style="line-height: 24px; text-align: center; max-width: 32rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 0.5rem; border: 1px solid rgb(75 85 99/1); margin: 2.5rem; padding: 2.5rem">
+  <h2>Welcome <%= @email %>!</h2>
 
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p>You can confirm your account email through the link below:</p>
+  <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), style: 'border-radius: 0.5rem; padding: 10px 25px; color: white; background: rgb(108 43 217/1); text-decoration: none; font-weight: 500;' %></p>
+</div>
