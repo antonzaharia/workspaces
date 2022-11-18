@@ -16,6 +16,10 @@ And(/^I should see toast "([^"]+)"$/) do |text|
   find('.toastify', text: text)
 end
 
+And(/I should see the selector "([^"]+)" from the container "([^"]+)" with text "([^"]+)"/) do |selector, container, text|
+  find(container).find(selector, text: text)
+end
+
 When(/^I fill in "(.+)" with "(.+)"$/) do |field, value|
   fill_in field, with: value
 end
