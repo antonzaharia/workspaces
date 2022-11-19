@@ -1,3 +1,10 @@
+Then(/^I sign out from workspace$/) do
+  find('button', text: 'Open user menu', visible: false).click
+  click_on 'Back'
+  find('button', text: 'Open user menu', visible: false).click
+  click_on 'Sign out'
+end
+
 Then(/^the password "([^"]*?)" is valid for user "([^"]*?)"$/) do |password, email|
   user = User.find_by(email: email)
   expect(user.valid_password?(password)).to be(true)

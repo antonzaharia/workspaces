@@ -3,10 +3,28 @@ Feature: User sign in from invite
 
   @lvh @javascript
   Scenario: Sign up
-    When I visit "/users/sign_up"
-    And I fill in the following form details safely:
-      | user_email                 | test@test.com |
-      | user_password              | password1     |
-      | user_password_confirmation | password1     |
-    And I click on the selector "input[type=submit]" from the container ".actions"
-    And "test@test.com" should receive an email
+    Given I am logged in as:
+      | user_email    | test@test.com |
+      | user_password | password!     |
+    Given the user "test@test.com" has a workspace with the following attributes:
+      | slug | company |
+    And I visit "/dashboard"
+    And I click "Company Name"
+    And I click "Add member"
+    And I click "Send"
+    And I should see the selector "span" from the container ".alert" with text "Email can't be blank"
+    When I fill in "workspace_user_email" with "member@test.com"
+    And I click "Send"
+    And I should see the selector ".font-bold" from the container "#workspace_user_1" with text "member@test.com"
+    And I should see the selector ".pending" from the container "#workspace_user_1" with text "pending"
+    Then I fill in "workspace_user_email" with "member@test.com"
+    And I click "Send"
+    And I should see the selector "span" from the container ".alert" with text "User already invited."
+    Then I sign out from workspace
+    And I should see toast "Signed out successfully."
+    And "member@test.com" open the email with text "You've been invited to join Company Name on Gooff."
+    And I open the email
+    And I click the first link in the email
+# Then I should be on signup page
+# And I fill the fields...
+# I should have an invite to the workspace
