@@ -23,8 +23,9 @@ Given(/^I am logged in as:$/) do |table|
   visit '/users/sign_in'
 
   fill_in_form_details(safely: true, table: table)
+  check 'Remember me'
 
-  find('input[type=submit]').find('.actions').click
+  find('.actions').find('input[type=submit]').click
 
   find('.toastify', text: 'Signed in successfully.')
 end
