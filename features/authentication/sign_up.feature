@@ -26,3 +26,4 @@ Feature: User sign in
       | user_password_confirmation | password!     |
     And I click on the selector "input[type=submit]" from the container ".actions"
     And I should see toast "Welcome! You have signed up successfully."
+    Then "test@test.com" should receive an email

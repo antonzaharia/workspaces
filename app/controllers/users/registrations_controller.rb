@@ -12,9 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    invites = WorkspaceUser.all.where(email: @user.email)
-    invites.each do |invite|
-      invite.update(user: @user, has_account: true)
+    if @user.save
+      UserMailer.with(user: @user).welcome_email.deliver_now
+      invites = WorkspaceUser.all.where(email: @user.email)
+      invites.each do |invite|
+        invite.update(user: @user, has_account: true)
+      end
     end
   end
 
