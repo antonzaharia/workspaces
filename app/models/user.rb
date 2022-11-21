@@ -14,6 +14,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validate :icon_validation
+
+  def icon_validation
+    if icon.attached?
+      if icon.blob.byte_size > 10.megabytes
+        icon.purge
+        errors.add(:icon, 'is too big')
+      elsif !icon.blob.content_type.starts_with?('image/')
+        icon.purge
+        errors.add(:icon, 'is in a wrong format')
+      end
+    end
+  end
+
   def show_name
     self.name.presence || 'not set'
   end

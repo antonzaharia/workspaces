@@ -36,8 +36,26 @@ And(/^I check the checkbox "([^"]+)"$/) do |option|
   check option
 end
 
+And(/^I attach file "([^"]+)" to input "([^"]+)"$/) do |filename, input_name|
+  attach_file input_name, Rails.root.join('spec', 'fixtures', 'files', filename)
+end
+
 And(/I click on the selector "([^"]+)" from the container "([^"]+)"/) do |selector, container|
   find(container).find(selector).click
 end
 
+Then(/^I should see the selector "([^"]*)" with text "((?:[^"\\]|\\.)*)"$/) do |selector, text|
+  text.gsub!('\"', '"')
+  expect(page).to have_selector(selector, text: text)
+end
 
+Then(/^I open the nav dropdown$/) do
+  find('button', text: 'Open user menu', visible: false).click
+end
+
+Then(/^I sign out from workspace$/) do
+  find('button', text: 'Open user menu', visible: false).click
+  click_on 'Back'
+  find('button', text: 'Open user menu', visible: false).click
+  click_on 'Sign out'
+end

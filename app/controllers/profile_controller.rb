@@ -12,9 +12,17 @@ class ProfileController < ApplicationController
   end
 
   def update_icon
-    @user.update!(icon_params)
+    @user.icon = icon_params[:icon]
 
-    redirect_to profile_path(@user)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to profile_path(@user), allow_other_host: true, notice: 'Profile pic updated.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :show, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
