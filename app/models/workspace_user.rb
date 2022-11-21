@@ -15,4 +15,8 @@ class WorkspaceUser < ApplicationRecord
 
     errors.add(:user, 'already invited.')
   end
+
+  def authenticate(given)
+    token == given
+  end
 end

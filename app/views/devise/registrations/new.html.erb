@@ -4,10 +4,17 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {'data-turbo' => "false"}) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="mb-6">
-      <%= f.label :email, class: 'font-medium' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input' %>
-    </div>
+    <% if @workspace_user.present? %>
+      <div class="mb-6">
+        <%= f.label :email, class: 'font-medium' %>
+        <%= f.email_field :email, disabled: true, value: @workspace_user.email, autocomplete: 'email', class: 'input text-gray-400' %>
+      </div>
+    <% else %>
+      <div class="mb-6">
+        <%= f.label :email, class: 'font-medium' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input' %>
+      </div>
+    <% end %>
 
     <div class="mb-6">
       <%= f.label :password, class: 'font-medium' %>
