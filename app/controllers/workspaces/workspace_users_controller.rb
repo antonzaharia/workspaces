@@ -34,11 +34,10 @@ module Workspaces
         @workspace_user.user = user
         @workspace_user.has_account = true
       end
-
-      UserMailer.with(workspace_user: @workspace_user).invitation_email.deliver_now
-
       respond_to do |format|
         if @workspace_user.save
+          UserMailer.with(workspace_user: @workspace_user).invitation_email.deliver_now
+
           format.turbo_stream do
             render turbo_stream: [
               turbo_stream.update('new_workspace_user', partial: 'workspaces/workspace_users/form', locals: { workspace_user: WorkspaceUser.new }),

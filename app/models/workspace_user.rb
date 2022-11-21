@@ -2,7 +2,7 @@ class WorkspaceUser < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :workspace
   
-  validates :email, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validate :uniqueness_for_same_workspace, on: :create
   validates :status, inclusion: { in: %w[accepted declined pending] }
 

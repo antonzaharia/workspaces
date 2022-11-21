@@ -7,8 +7,9 @@
     <% if @workspace_user.present? %>
       <div class="mb-6">
         <%= f.label :email, class: 'font-medium' %>
-        <%= f.email_field :email, disabled: true, value: @workspace_user.email, autocomplete: 'email', class: 'input text-gray-400' %>
+        <span class="input text-gray-400"><%= @workspace_user.email %></span>
       </div>
+      <%= f.hidden_field :email, value: @workspace_user.email %>
     <% else %>
       <div class="mb-6">
         <%= f.label :email, class: 'font-medium' %>
