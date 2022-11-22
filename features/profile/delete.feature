@@ -11,3 +11,4 @@ Feature: Delete profile
     And I click "Delete your account"
     And I click "Confirm"
     Then I should see toast "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+    Then the user "test@test.com" does not exist

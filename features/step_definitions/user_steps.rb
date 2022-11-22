@@ -1,3 +1,7 @@
+Then(/^the user "([^"]*)" does not exist$/) do |email|
+  user = User.find_by(email: email)
+  expect(user).to eq(nil)
+end
 
 Then(/^the password "([^"]*?)" is valid for user "([^"]*?)"$/) do |password, email|
   user = User.find_by(email: email)
