@@ -31,3 +31,4 @@ Feature: Edit profile details
 
     Then the user "caca@test.com" has the following attributes:
       | name | Antonel |
+    Then the user "caca@test.com" has the "icon" not nil

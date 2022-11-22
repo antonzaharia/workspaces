@@ -9,6 +9,11 @@ Given(/^a user exists with the following attributes:$/) do |table|
   @user = FactoryBot.create(:user, attributes)
 end
 
+Then(/^the user "([^"]*)" has the "([^"]*)" not nil$/) do |email, key|
+  user = User.find_by(email: email)
+  expect(user.send(key)).to_not eq(nil)
+end
+
 Then(/^the user "([^"]*)" has the following attributes:$/) do |email, table|
   user = User.find_by(email: email)
   extract_attributes_from_table(table).each_pair do |key, val|
