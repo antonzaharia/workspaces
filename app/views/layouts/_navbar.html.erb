@@ -3,7 +3,7 @@
 
     <%= link_to root_path, class: 'flex items-center hover:no-underline' do %>
       <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><%= logo %></span>
+      <span class="logo-text self-center text-xl font-semibold whitespace-nowrap dark:text-white"><%= logo %></span>
     <% end %>
 
       <% if user_signed_in? %>
@@ -32,9 +32,6 @@
               <li>
                 <%= link_to 'Contact', '#', class: 'dropdown-item', data: {action: "click->dropdown#toggle"} %>
               </li>
-              <li>
-                <%= link_to 'Settings', '#', class: 'dropdown-item', data: {action: "click->dropdown#toggle"} %>
-              </li>
               <% if @workspace.blank? %>
                 <li>
                   <%= button_to destroy_user_session_path, method: :delete, class: 'dropdown-item hover:bg-gray-100 w-full text-left border-t bg-white flex items-center gap-1.5' do %>
@@ -45,6 +42,11 @@
                   <% end %>
                 </li>
               <% else %>
+                <% if current_user.owner?(@workspace) %>
+                  <li>
+                    <%= link_to 'Workspace settings', workspace_settings_path, class: 'dropdown-item hover:bg-gray-100 w-full text-left border-t bg-white flex items-center gap-1.5', data: {action: "click->dropdown#toggle"} %>
+                  </li>
+                <% end %>
                 <li>
                   <%= link_to root_url(only_path: false, subdomain: false), class: 'dropdown-item hover:bg-gray-100 w-full text-left border-t bg-white flex items-center gap-1.5' do %>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 p-1">
