@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   constraints(!SubdomainRoutes) do
     scope module: :workspaces do 
       get '/', to: 'pages#show', as: :workspace_home
+      get '/settings', to: 'pages#settings', as: :workspace_settings
+      resources :workspaces do
+        get :delete
+      end
 
       post :accept_invite, to: 'pages#accept_invite'
       post :decline_invite, to: 'pages#decline_invite'
