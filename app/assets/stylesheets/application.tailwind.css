@@ -1,28 +1,30 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* app components */
 /* @import "./components/card.css"; */
 
 :root {
-   /* Purples */
+  /* Purples */
   --purple: #a25c9b;
   --deep_purple: #762a6e;
   --light_purple: #f3bdee;
 
-   /* Oranges */
+  /* Oranges */
   --orange: #eb6f45;
   --deep_orange: #c65029;
   --light_orange: #ffaf94;
 
-   /* Yellow */
+  /* Yellow */
   --yellow: #ffae11;
   --deep_yellow: #ba7d07;
   --light_yellow: #ffdb95;
 
   /* Background */
   --bg: #13111c;
-  --bg-gradient: linear-gradient(327.21deg, rgba(33, 0, 75, 0.24) 3.65%, rgba(60, 0, 136, 0) 40.32%), linear-gradient(245.93deg, rgba(209, 21, 111, 0.16) 0%, rgba(209, 25, 80, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111C;
+  --bg-gradient: linear-gradient(327.21deg, rgba(33, 0, 75, 0.24) 3.65%, rgba(60, 0, 136, 0) 40.32%),
+    linear-gradient(245.93deg, rgba(209, 21, 111, 0.16) 0%, rgba(209, 25, 80, 0) 36.63%),
+    linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111c;
 
   /* Text */
   --text-color: #aeb2c1;
@@ -31,15 +33,29 @@ body {
   min-height: 100vh;
   background: var(--bg-gradient);
 }
-p, h1, h2, h3, h4, h5, h6, span, li, label, a, div {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li,
+label,
+a,
+div {
   color: var(--text-color);
 }
 .hidden {
   display: none !important;
 }
 
-.btn-secondary, button, button input[type='button'], button input[type='submit'] {
-  background-color: hsl(var(--s)/var(--tw-bg-opacity));
+.btn-secondary,
+button,
+button input[type='button'],
+button input[type='submit'] {
+  background-color: hsl(var(--s) / var(--tw-bg-opacity));
 }
 .input-group .field_with_errors {
   width: 100% !important;
@@ -49,7 +65,7 @@ p, h1, h2, h3, h4, h5, h6, span, li, label, a, div {
 }
 .input-group .field_with_errors input {
   border-color: var(--deep_orange);
-  border-radius: .5rem 0 0 .5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 @layer components {
@@ -64,13 +80,11 @@ p, h1, h2, h3, h4, h5, h6, span, li, label, a, div {
   }
   .accepted {
     @apply badge badge-primary;
-  } 
+  }
   .declined {
     @apply badge badge-ghost;
-  } 
+  }
   .pending {
     @apply badge;
   }
 }
-
-

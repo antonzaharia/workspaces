@@ -19,10 +19,6 @@ class WorkspacesController < ApplicationController
   def edit
   end
 
-  def delete
-    @workspace = Workspace.find(params[:workspace_id])
-  end
-
   # POST /workspaces or /workspaces.json
   def create
     @workspace = current_user.my_workspaces.new(workspace_params)
@@ -60,14 +56,6 @@ class WorkspacesController < ApplicationController
         format.json { render json: @workspace.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # DELETE /workspaces/1 or /workspaces/1.json
-  def destroy
-    @workspace.workspace_users.delete_all
-    @workspace.destroy
-
-    redirect_to workspace_home_path
   end
 
   private

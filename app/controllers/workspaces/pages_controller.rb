@@ -4,6 +4,8 @@ module Workspaces
       @workspace_users = @workspace.workspace_users.all.order(created_at: :desc)
     end
 
+    def settings
+    end
 
     def accept_invite
       workspace_user = @workspace.workspace_users.find_by(user: current_user)
