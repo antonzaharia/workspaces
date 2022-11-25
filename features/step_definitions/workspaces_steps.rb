@@ -9,3 +9,19 @@ Given(/^the user "([^"]+)" has a workspace with the following attributes:$/) do 
   attributes[:user_id] = user.id
   @workspace = FactoryBot.create(:workspace, attributes)
 end
+
+Given(/^the workspace "([^"]+)" members with the following attributes:$/) do |slug, table|
+  workspace = Workspace.find_by(slug: slug)
+  attributes = extract_attributes_from_table(table)
+  wu = WorkspaceUser.new(**attributes, workspace: workspace)
+  user = User.find_by(email: attributes[:email])
+  if user
+    wu.update(user: user, has_account: true)
+  else
+    wu.save
+  end
+end
+
+Then(/^all the member invites should be destroyed along with the workspace$/) do
+  expect(WorkspaceUser.all.size).to eq(1)
+end
