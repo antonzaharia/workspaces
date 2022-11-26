@@ -16,6 +16,10 @@ And(/^I click "([^"]+)"$/) do |label|
   click_on label
 end
 
+And(/I should see modal with text "([^"]+)"/) do |text|
+  find('.modal').find('p', text: text)
+end
+
 And(/^I should see toast "([^"]+)"$/) do |text|
   find('.toastify', text: text)
 end
