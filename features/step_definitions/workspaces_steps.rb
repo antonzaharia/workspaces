@@ -25,3 +25,8 @@ end
 Then(/^all the member invites should be destroyed along with the workspace$/) do
   expect(WorkspaceUser.all.size).to eq(1)
 end
+
+Then(/^the workspace "([^"]+)" should have "([^"]+)" members$/) do |slug, n|
+  workspace = Workspace.find_by(slug: slug)
+  expect(workspace.workspace_users.all.size).to eq(n.to_i)
+end
