@@ -2,7 +2,7 @@ Feature: User sign in from invite
   As a User I should be able to sign in from an invite received
 
   @lvh @javascript
-  Scenario: Sign up
+  Scenario: Sign up from invite
     Given I am logged in as:
       | user_email    | test@test.com |
       | user_password | password!     |
