@@ -1,5 +1,5 @@
-Feature: User sign in from invite
-  As a User I should be able to sign in from an invite received
+Feature: Delete workspace
+As an Owner I should be able to delete a workspace
 
   @lvh @javascript
   Scenario: Sign up
