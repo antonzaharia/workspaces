@@ -2,7 +2,7 @@ Feature: Delete workspace
 As an Owner I should be able to delete a workspace
 
   @lvh @javascript
-  Scenario: Sign up
+  Scenario: Delete workspace
     Given I am logged in as:
       | user_email    | test@test.com |
       | user_password | password!     |
