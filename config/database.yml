@@ -81,6 +81,10 @@ test:
 #
 production:
   <<: *default
-  database: workpsaces_production
-  username: workpsaces
-  password: <%= ENV["WORKPSACES_DATABASE_PASSWORD"] %>
+  database: workspaces-db
+  username: postgres
+  password: E49JYL3a6fIfYhJ
+  hostname: workspaces-db.internal
+  proxy_port: 5432
+  port: 5433
+  connection_string: postgres://postgres:E49JYL3a6fIfYhJ@workspaces-db.internal:5432

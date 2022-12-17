@@ -55,6 +55,14 @@ end
 #   end
 #
 
+Capybara.register_driver :headless_chrome do |app|
+  opts = Selenium::WebDriver::Chrome::Options.new
+
+  chrome_args = %w[--headless --no-sandbox --disable-gpu --window-size=1920,1080 --remote-debugging-port=9222]
+  chrome_args.each { |arg| opts.add_argument(arg) }
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: opts)
+end
+
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
